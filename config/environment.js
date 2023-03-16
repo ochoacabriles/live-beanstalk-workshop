@@ -1,4 +1,5 @@
 module.exports = {
   port: process.env.PORT,
-  dbTable: process.env.DB_TABLE,
+  dbTable: 'product_inventory',
+  topicArn: 'arn:aws:sns:us-east-1:791679799075:notificaciones'
 };

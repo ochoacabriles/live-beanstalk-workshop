@@ -1,15 +1,23 @@
 const express = require('express');
+const AWS = require('aws-sdk');
 require('dotenv').config();
+
+AWS.config.update({ region: 'us-east-1' });
+
+const { port } = require('./config/environment');
+const read = require('./controllers/read');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/api', (_, res) => {
-  res.json({ status: 'working' });
+app.get('/api/productos', async (_, res) => {
+  const products = await read();
+
+  res.json({ products });
 });
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server ready on port ${process.env.PORT}`);
+  console.log(`Server ready on port ${port}`);
 });

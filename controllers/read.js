@@ -1,11 +1,10 @@
 const AWS = require('aws-sdk');
-const { dbTable } = require('../config/environment');
 
 const read = async () => {
   const dynamodb = new AWS.DynamoDB.DocumentClient();
 
   const scanParams = {
-    TableName: dbTable,
+    TableName: 'product_inventory',
   };
 
   console.log(`scanParams: ${JSON.stringify(scanParams)}`);

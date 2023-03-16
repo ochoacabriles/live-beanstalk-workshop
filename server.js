@@ -6,6 +6,7 @@ AWS.config.update({ region: 'us-east-1' });
 
 const { port } = require('./config/environment');
 const read = require('./controllers/read');
+const create = require('./controllers/create');
 
 const app = express();
 
@@ -20,6 +21,12 @@ app.get('/api/productos', async (_, res) => {
   const products = await read();
 
   res.json({ products });
+});
+
+app.post('/api/productos', async (req, res) => {
+  const response = await create(req.body);
+
+  res.json(response);
 });
 
 app.listen(port, () => {

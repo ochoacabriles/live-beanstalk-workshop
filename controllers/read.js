@@ -8,6 +8,8 @@ const read = async () => {
     TableName: dbTable,
   };
 
+  console.log(`scanParams: ${JSON.stringify(scanParams)}`);
+
   let dynamoData = await dynamodb.scan(scanParams).promise();
 
   const items = dynamoData.Items;

@@ -1,11 +1,10 @@
 const AWS = require('aws-sdk');
-const { dbTable } = require('../config/environment');
 
 const create = async (item) => {
   const dynamodb = new AWS.DynamoDB.DocumentClient();
 
   const params = {
-    TableName: dbTable,
+    TableName: 'product_inventory',
     Item: item,
   };
 

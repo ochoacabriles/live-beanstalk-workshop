@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const AWS = require('aws-sdk');
 
@@ -21,6 +22,6 @@ app.get('/api/productos', async (_, res) => {
   res.json({ products });
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
   console.log(`Server ready on port ${port}`);
 });
